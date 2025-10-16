@@ -12,11 +12,18 @@ A simple RESTful API that returns your profile information along with a dynamic 
 - npm 8+
 
 ## Setup
-1. Install dependencies:
+1. Dependencies
+    -"body-parser": "^2.2.0",
+    -"cors": "^2.8.5",
+    -"dotenv": "^17.2.3",
+    -"express": "^5.1.0",
+    -"express-rate-limit": "^7.5.1",
+    -"nodemon": "^3.1.10"
+2. Install dependencies:
 ```bash
 npm install
 ```
-2. Create a `.env` file in the project root and set the port:
+3. Create a `.env` file in the project root and set the port:
 ```bash
 PORT=8000
 WINDOW_MS=900000
