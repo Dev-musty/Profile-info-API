@@ -15,7 +15,7 @@ const fetchWithTimeout = async(url, options = {})=>{
 const profile = async (req,res) => {
   const {email,name,stack} = req.body
   const date = new Date().toISOString()
-  const baseUrl = 'https://catfact.ninja' 
+  const baseUrl = 'https://catfact.ninja'
   const profileResponse = {
     "status": "success",
     "user": {
@@ -38,7 +38,7 @@ const profile = async (req,res) => {
         headers: { 'Content-Type': 'application/json'}
       })
           if(!response.ok){
-            res.json({
+            return res.json({
               error:`Request failed, status: ${response.status}`,
               profile: profileResponse
             })

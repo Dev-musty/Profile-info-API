@@ -19,8 +19,8 @@ npm install
 2. Create a `.env` file in the project root and set the port:
 ```bash
 PORT=8000
-RATE_WINDOW_MS=60000
-RATE_MAX=60
+WINDOW_MS=900000
+RATE_MAX=10
 ```
 
 ## Run
@@ -92,5 +92,6 @@ Example timeout response:
 ## References
 - AbortController and fetch timeouts (medium): https://medium.com/@YassineDev/how-to-timeout-a-fetch-request-2100dfee0762
 - catfact.ninja API : https://catfact.ninja/
+- Rate limiting : https://express-rate-limit.mintlify.app
 
 
