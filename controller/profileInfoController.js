@@ -29,7 +29,7 @@ const profile = async (req,res) => {
   try {
     // create a set to store the cat facts that are already gotten
     const catFactSet = new Set()
-    // fetch random cat fact`
+    // fetch random cat fact
     let fact;
     do{
       const response = await fetchWithTimeout(`${baseUrl}/fact?max_length=100`,{
@@ -38,7 +38,7 @@ const profile = async (req,res) => {
         headers: { 'Content-Type': 'application/json'}
       })
           if(!response.ok){
-            return res.json({
+            return res.status(502).json({
               error:`Request failed, status: ${response.status}`,
               profile: profileResponse
             })
@@ -46,14 +46,14 @@ const profile = async (req,res) => {
           const data = await response.json()
           fact = data.fact
     }
-    // if catFactSet.has(data.fact) is true, continue fetching for a new cat fact. When it's false, add the cat fact to the set and return the json response
-    while (catFactSet.has(fact)) {
-      catFactSet.add(fact)
-      return res.status(200).json({
-        ...profileResponse,
-        fact: fact
-      })
-    }
+    // if catFactSet.has(fact) is true, continue fetching for a new cat fact. When it's false, add the cat fact to the set and return the json response
+    while (catFactSet.has(fact));
+    // Add the new fact to the set and return response
+    catFactSet.add(fact)
+    return res.status(200).json({
+      ...profileResponse,
+      fact: fact
+    })
   } catch (error) {
     if (error.name === 'AbortError') {
       return res.status(504).json({message: `${error}`})
