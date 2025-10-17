@@ -13,7 +13,7 @@ const fetchWithTimeout = async(url, options = {})=>{
   return response;
 }
 const profile = async (req,res) => {
-  const {email,name,stack} = req.body
+  const {email,name,stack} = req.query
   const date = new Date().toISOString()
   const baseUrl = 'https://catfact.ninja'
   const profileResponse = {
