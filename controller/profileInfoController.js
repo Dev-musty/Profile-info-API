@@ -17,12 +17,15 @@ const fetchWithTimeout = async(url, options = {})=>{
 const profile = async (req,res) => {
   const date = new Date().toISOString()
   const baseUrl = 'https://catfact.ninja'
+  const email = process.env.EMAIL
+  const name =  process.env.NAME
+  const stack = process.env.STACK
   const profileResponse = {
     "status": "success",
     "user": {
-      "email": process.env.EMAIL,
-      "name": process.env.NAME,
-      "stack": process.env.STACK
+      email: email ,
+      name: name ,
+      stack: stack 
     },
     "timestamp": date,
     "fact": "Sorry,the API down,but here is one fact about cats: 'In 1987 cats overtook dogs as the number one pet in America.'"
