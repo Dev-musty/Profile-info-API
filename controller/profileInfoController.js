@@ -1,4 +1,6 @@
 // Profile info & cat fact api
+import env from 'dotenv'
+env.config()
 // Add timeout to the api call
 const fetchWithTimeout = async(url, options = {})=>{
   const {timeout = 8000} = options
@@ -13,15 +15,14 @@ const fetchWithTimeout = async(url, options = {})=>{
   return response;
 }
 const profile = async (req,res) => {
-  const {email,name,stack} = req.query
   const date = new Date().toISOString()
   const baseUrl = 'https://catfact.ninja'
   const profileResponse = {
     "status": "success",
     "user": {
-      "email": email,
-      "name": name,
-      "stack": stack
+      "email": process.env.EMAIL,
+      "name": process.env.NAME,
+      "stack": process.env.STACK
     },
     "timestamp": date,
     "fact": "Sorry,the API down,but here is one fact about cats: 'In 1987 cats overtook dogs as the number one pet in America.'"
